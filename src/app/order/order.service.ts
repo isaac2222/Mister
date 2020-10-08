@@ -4,12 +4,16 @@ import { CartItem } from "app/restaurant-detail/shopping-cart/cart-item.model";
 import { Observable } from "rxjs/Observable";
 import { Order } from "./order.model";
 import { DBLINK } from '../../../app.api';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { LoginService } from "app/security/login/login.service";
+
 
 
 @Injectable()
 export class OrderService {
-  constructor ( private cartService: ShoppingCartService , private http: HttpClient){
+  constructor ( private cartService: ShoppingCartService , 
+                private http: HttpClient,
+                private loginServie: LoginService){
   }
 
   cartItems(): CartItem[] {
@@ -32,8 +36,11 @@ export class OrderService {
   }
 
   checkOrder(order: Order): Observable<string> {
-
-    return this.http.post<Order>(`${DBLINK}/orders`, order)
+    let headers = new HttpHeaders()
+    if(this.loginServie.isLoggedIn()){
+      headers = headers.set('Authorization', `Bearer ${this.loginServie.user.accessToken}`)
+    }
+    return this.http.post<Order>(`${DBLINK}/orders`, order, {headers: headers})
                 .map(order => order.id)
   }
 
