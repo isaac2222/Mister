@@ -11,7 +11,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     state('open', style({ opacity: 1 })),
     transition('void => open', [
       style({ opacity: 0, transform: 'translateY(-20px' }),
-      animate('15000ms 0 ease-in')
+      animate('500ms ease-in')
     ])
   ])
 ]
