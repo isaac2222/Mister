@@ -314,3 +314,11 @@ body {
 #amlinechart5 {
   height: 400px;
 }
+
+.main-content-inner {
+  padding: 0 30px 50px;
+}
+
+.horizontal-main-wrapper .main-content-inner {
+  padding: 0 0 50px;
+}
