@@ -296,3 +296,21 @@ body {
 .searchBar {
   opacity: 0;
 }
+
+
+.card:hover {
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.02);
+}
+
+.card-body {
+  padding: 25.6px;
+  padding: 1.6rem;
+}
+
+#amlinechart1,
+#amlinechart2,
+#amlinechart3,
+#amlinechart4,
+#amlinechart5 {
+  height: 400px;
+}

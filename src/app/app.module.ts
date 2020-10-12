@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ROUTES } from './app.routes';
-import { HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,9 +18,9 @@ import { SharedModule } from './shared/shared.module';
 import { OrderSumaryComponent } from './order-sumary/order-sumary.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './not-found/not-found.component'
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
@@ -40,13 +40,14 @@ import { UserDetailComponent } from './header/user-detail/user-detail.component'
     NotFoundComponent,
     LoginComponent,
     UserDetailComponent,
-      ],
+    DashboardComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SharedModule.forRoot(),  
-    RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
+    SharedModule.forRoot(),
+    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
   ],
   providers: [],
   bootstrap: [AppComponent]

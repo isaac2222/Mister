@@ -3,7 +3,7 @@
   <nav class="navbar navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand"><b>Mister</b></a>
+        <a class="navbar-brand"><b>Altima FIM</b></a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
           <i class="fa fa-bars"></i>
         </button>
@@ -12,6 +12,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
+          <li *ngIf="logged()" routerLinkActive="active"><a [routerLink]="['/dashboard']">Dashboard</a></li>
           <li routerLinkActive="active"><a [routerLink]="['/restaurants']">Restaurantes</a></li>
           <li *ngIf="!logged()" routerLinkActive="active"><a [routerLink]="['/login']">Entrar</a></li>
           <li routerLinkActive="active"><a [routerLink]="['/about']">Sobre</a></li>
@@ -19,7 +20,7 @@
       </div>
       <div class="colapse navbar-collapse pull-right">
         <ul>
-          <li *ngIf="logged()">Usuário</li>
+          <li *ngIf="logged()">Usuario</li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
