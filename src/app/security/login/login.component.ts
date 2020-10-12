@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationService } from 'app/shared/snackbar/notification.service';
 import { LoginService } from './login.service';
-import {User} from './user.model'
 
 @Component({
   selector: 'mt-login',
@@ -14,11 +13,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup
   navigateTo: string
 
-  constructor(private fb: FormBuilder, 
-              private loginservice: LoginService, 
-              private notificatioService: NotificationService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+  constructor(private fb: FormBuilder,
+    private loginservice: LoginService,
+    private notificatioService: NotificationService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -29,15 +28,15 @@ export class LoginComponent implements OnInit {
 
   }
 
-login(){
-  this.loginservice.login(this.loginForm.value.email, 
-                          this.loginForm.value.password)
-                   .subscribe(user => this.notificatioService.notify(`Bem vindo, ${user.name}`),
-                   response => 
-                          this.notificatioService.notify(response.error.message),
-                          ()=>{
-                            this.router.navigate([atob(this.navigateTo)])
-                          })
-}
+  login() {
+    this.loginservice.login(this.loginForm.value.email,
+      this.loginForm.value.password)
+      .subscribe(user => this.notificatioService.notify(`Bem vindo, ${user.name}`),
+        response =>
+          this.notificatioService.notify(response.error.message),
+        () => {
+          this.router.navigate([atob(this.navigateTo)])
+        })
+  }
 
 }
