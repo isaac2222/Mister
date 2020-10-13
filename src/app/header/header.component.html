@@ -18,11 +18,18 @@
           <li routerLinkActive="active"><a [routerLink]="['/about']">Sobre</a></li>
         </ul>
       </div>
-      <div class="colapse navbar-collapse pull-right">
-        <ul>
-          <li *ngIf="logged()">Usuario</li>
-        </ul>
+      <div *ngIf="logged()" class="user-profile pull-right">
+        <img class="avatar user-thumb" src="../../assets/images/author/avatar.png" alt="avatar">
+        <h4 class="user-name dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Usuario <i
+            class="fa fa-angle-down"></i></h4>
+        <div class="dropdown-menu" x-placement="bottom-start"
+          style="position: absolute; transform: translate3d(45px, 45px, 0px); top: 0px; left: 0px; will-change: transform;">
+          <a class="dropdown-item" href="#">Message</a>
+          <a class="dropdown-item" href="#">Settings</a>
+          <a class="dropdown-item" href="#">Log Out</a>
+        </div>
       </div>
+
       <!-- /.navbar-collapse -->
 
     </div>
