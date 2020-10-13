@@ -26,12 +26,21 @@
         "../node_modules/admin-lte/dist/css/AdminLTE.min.css",
         "../node_modules/admin-lte/dist/css/skins/skin-red.min.css",
         "../node_modules/admin-lte/plugins/iCheck/flat/red.css",
+        "./assets/css/default-css.css",
+        "./assets/css/font-awesome.min.css",
+        "./assets/css/metisMenu.css",
+        "./assets/css/responsive.css",
+        "./assets/css/slicknav.min.css",
+        "./assets/css/styles.css",
+        "./assets/css/themify-icons.css",
+        "./assets/css/typography.css",
         "styles.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/admin-lte/bootstrap/js/bootstrap.min.js",
-        "../node_modules/admin-lte/dist/js/app.min.js"
+        "../node_modules/admin-lte/dist/js/app.min.js",
+        "./assets/js/line-chart.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
