@@ -18,18 +18,20 @@
           <li routerLinkActive="active"><a [routerLink]="['/about']">Sobre</a></li>
         </ul>
       </div>
-      <div *ngIf="logged()" class="user-profile pull-right">
+      <mt-user-detail *ngIf="logged()"></mt-user-detail>
+      <!-- <div *ngIf="logged()" class="user-profile pull-right">
         <img class="avatar user-thumb" src="../../assets/images/author/avatar.png" alt="avatar">
         <h4 class="user-name dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Usuario <i
-            class="fa fa-angle-down"></i></h4>
-        <div>
-          <a class="dropdown-item" href="#">Message</a>
-          <a class="dropdown-item" href="#">Settings</a>
-          <a class="dropdown-item" href="#">Log Out</a>
-        </div>
-      </div>
+            class="fa fa-angle-down"></i></h4> -->
 
-      <!-- /.navbar-collapse -->
+      <!-- <div>
+        <a class="dropdown-item" href="#">Message</a>
+        <a class="dropdown-item" href="#">Settings</a>
+        <a class="dropdown-item" href="#">Log Out</a>
+      </div>
+    </div> -->
+
+    <!-- /.navbar-collapse -->
 
     </div>
   </nav>

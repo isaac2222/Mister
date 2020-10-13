@@ -21,6 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component'
 import { LoginComponent } from './security/login/login.component';
 import { UserDetailComponent } from './header/user-detail/user-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChartLineComponent } from './charts/chart-line/chart-line.component';
 
 
 
@@ -41,6 +42,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     UserDetailComponent,
     DashboardComponent,
+    ChartLineComponent,
   ],
   imports: [
     BrowserModule,

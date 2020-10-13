@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggedInguard } from 'app/security/loggedIn.guard';
 import { LoginService } from 'app/security/login/login.service';
 import { User } from 'app/security/login/user.model'
 
