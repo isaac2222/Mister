@@ -14,15 +14,15 @@
         <ul class="nav navbar-nav">
           <li *ngIf="logged()" routerLinkActive="active"><a [routerLink]="['/dashboard']">Dashboard</a></li>
           <li routerLinkActive="active"><a [routerLink]="['/restaurants']">Restaurantes</a></li>
-          <li *ngIf="!logged()" routerLinkActive="active"><a [routerLink]="['/login']">Entrar</a></li>
           <li routerLinkActive="active"><a [routerLink]="['/about']">Sobre</a></li>
         </ul>
       </div>
-      <mt-user-detail *ngIf="logged()"></mt-user-detail>
-      <!-- <div *ngIf="logged()" class="user-profile pull-right">
+      <mt-user-detail></mt-user-detail>
+      <div *ngIf="logged()" style="height: 50px; padding-right: 30px; padding-top: 2px; margin-top: 0px;" class="navbar-collapse user-profile pull-right">
         <img class="avatar user-thumb" src="../../assets/images/author/avatar.png" alt="avatar">
-        <h4 class="user-name dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Usuario <i
-            class="fa fa-angle-down"></i></h4> -->
+        <h4 class="user-name dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{user().name}} <i
+            class="fa fa-angle-down"></i></h4>
+      </div>
 
       <!-- <div>
         <a class="dropdown-item" href="#">Message</a>
@@ -31,7 +31,7 @@
       </div>
     </div> -->
 
-    <!-- /.navbar-collapse -->
+      <!-- /.navbar-collapse -->
 
     </div>
   </nav>

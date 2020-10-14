@@ -1,7 +1,8 @@
 <div class="navbar-custom-menu">
   <ul class="nav navbar-nav">
     <li class="user user-menu">
-        <a href="#">Entrar</a>
+        <a *ngIf="!isLoggedIn()" [routerLink]="['/login']">Entrar</a>
+        <a *ngIf="isLoggedIn()" (click)="logout()">Sair</a>
     </li>
   </ul>
 </div>

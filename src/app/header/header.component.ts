@@ -10,12 +10,15 @@ import { User } from 'app/security/login/user.model'
 })
 export class HeaderComponent implements OnInit {
 
-  user: User
+  
   constructor(private loginService: LoginService) { }
 
   logged() {
-    const loggedIn = this.loginService.isLoggedIn()
-    return loggedIn
+    return this.loginService.isLoggedIn()
+  }
+
+  user(): User {
+    return this.loginService.user
   }
 
   ngOnInit() {

@@ -5,6 +5,8 @@ import { CartItem } from 'app/restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { User } from 'app/security/login/user.model';
+import { LoginService } from 'app/security/login/login.service';
 
 @Component({
   selector: 'mt-order',
@@ -30,7 +32,8 @@ export class OrderComponent implements OnInit {
 
   constructor(private orderService: OrderService,
     private router: Router,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private loginService: LoginService) { }
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
@@ -86,6 +89,14 @@ export class OrderComponent implements OnInit {
         this.orderService.clear()
       })
     console.log(order)
+  }
+
+  user() : User{
+    return this.loginService.user
+  }
+
+  isOrderCompleted():boolean{
+    return false
   }
 
 }
