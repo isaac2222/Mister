@@ -22,6 +22,7 @@ export class OrderComponent implements OnInit {
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
   numberPattern = /^[0-9]*$/
+  orderId : string;
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -82,7 +83,11 @@ export class OrderComponent implements OnInit {
   checkOrder(order: Order) {
     order.orderItems = this.cartItems()
       .map((item: CartItem) => new OrderItem(item.quantity, item.menuItem.id))
+
     this.orderService.checkOrder(order)
+    .do((orderId: string)=> {
+      this.orderId = orderId
+    }) 
       .subscribe((orderId: string) => {
         this.router.navigate(['/order-sumary'])
         console.log(`Compra concluída ${orderId}`)
@@ -96,7 +101,7 @@ export class OrderComponent implements OnInit {
   }
 
   isOrderCompleted():boolean{
-    return false
+    return this.orderId !== undefined
   }
 
 }
