@@ -4,7 +4,7 @@ import { OrderService } from './order.service';
 import { CartItem } from 'app/restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { User } from 'app/security/login/user.model';
 import { LoginService } from 'app/security/login/login.service';
 
@@ -38,7 +38,10 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      name: this.formBuilder.control('', [Validators.required, Validators.minLength(2)]),
+      name: new FormControl('', {
+      validators:[Validators.required, Validators.minLength(2)],
+      updateOn: 'blur'
+      }),
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       address: this.formBuilder.control('', [Validators.required, Validators.minLength(2)]),
