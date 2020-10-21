@@ -37,10 +37,9 @@ export class OrderComponent implements OnInit {
     private loginService: LoginService) { }
 
   ngOnInit() {
-    this.orderForm = this.formBuilder.group({
+    this.orderForm = new FormGroup({
       name: new FormControl('', {
-      validators:[Validators.required, Validators.minLength(2)],
-      updateOn: 'blur'
+      validators:[Validators.required, Validators.minLength(2)]
       }),
       email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
       emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
@@ -48,7 +47,7 @@ export class OrderComponent implements OnInit {
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAddress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required])
-    }, { validator: OrderComponent.equalsTo })
+    }, { validators: [OrderComponent.equalsTo], updateOn: 'blur' })
   }
 
   static equalsTo(group: AbstractControl): { [key: string]: boolean } {
