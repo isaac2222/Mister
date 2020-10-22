@@ -6,7 +6,6 @@ import { trigger,state, transition, animate, keyframes,style } from '@angular/an
 @Component({
   selector: 'mt-shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: ['./shopping-cart.component.css'],
   animations: [trigger('keyAnimation', [
     state('ready', style({opacity: 1})),
     transition('void => ready', animate('500ms 0s ease-in', keyframes([

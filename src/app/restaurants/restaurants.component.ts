@@ -3,11 +3,8 @@ import { Restaurant } from './restaurant/restaurant.model';
 import { RestaurantsService } from './restaurants.service';
 import { trigger, state, style, transition, animate} from '@angular/animations'
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-
-import 'rxjs/add/operator/debounceTime'
-import 'rxjs/add/operator/distinctUntilChanged'
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, from } from 'rxjs';
+import { switchMap, tap, debounceTime, catchError, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'mt-restaurants',
@@ -48,13 +45,14 @@ export class RestaurantsComponent implements OnInit {
     });
 
     this.searchControl.valueChanges
-    .debounceTime(500)
-    .distinctUntilChanged()
-    .do(searchTerm => console.log(`q=${searchTerm}`))
-    .switchMap(searchTerm =>
-       this.restaurantsService.restaurants(searchTerm)
-       .catch(error => of([])))
-    .subscribe(restaurants  => this.restaurants = restaurants);
+    .pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap(searchTerm =>
+        this.restaurantsService
+        .restaurants(searchTerm)
+        .pipe(catchError(error => from([]))))
+    ).subscribe(restaurants  => this.restaurants = restaurants);
 
   }
 
